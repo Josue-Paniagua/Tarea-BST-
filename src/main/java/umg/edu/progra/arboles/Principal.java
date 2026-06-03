@@ -153,6 +153,16 @@ public class Principal {
         arbolEspejo.imprimirArbol();
         System.out.print("InOrden despues: ");
         arbolEspejo.inOrden();
+        
+        //sysos de problemas extras E1 probelam 6
+        System.out.println("\n-- Extra E1: kEsimoMenor --");
+        ArbolBinarioBusqueda arbolK = new ArbolBinarioBusqueda();
+        for (int v : new int[]{50, 30, 70, 20, 40, 60, 80, 10}) {
+            arbolK.insertar(v);
+        }
+        System.out.println("1er menor: " + arbolK.kEsimoMenor(1)); // 10
+        System.out.println("3er menor: " + arbolK.kEsimoMenor(3)); // 30
+        System.out.println("5to menor: " + arbolK.kEsimoMenor(5)); // 50
         /*
          * Ejercicios
          *

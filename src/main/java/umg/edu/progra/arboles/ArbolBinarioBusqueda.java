@@ -127,6 +127,31 @@ public class ArbolBinarioBusqueda {
         invertirRecursivo(nodo.izquierdo);
         invertirRecursivo(nodo.derecho);
     }
+
+    //METODOS SOBRE PROBLEMAS EXTRAS PROBLEMAS 6
+    
+    public int kEsimoMenor(int k) {
+        if (k < 1 || k > tamanio) {
+            throw new IllegalArgumentException("k fuera de rango");
+        }
+        int[] contador = {0};      // contador compartido entre llamadas recursivas
+        int[] resultado = {-1};    // aqui guardamos el resultado cuando lo encontremos
+        kEsimoRecursivo(raiz, k, contador, resultado);
+        return resultado[0];
+    }
+
+    private void kEsimoRecursivo(Nodo nodo, int k, int[] contador, int[] resultado) {
+        if (nodo == null || contador[0] >= k) {
+            return;
+        }
+        kEsimoRecursivo(nodo.izquierdo, k, contador, resultado);
+        contador[0]++;
+        if (contador[0] == k) {
+            resultado[0] = nodo.dato;
+            return;
+        }
+        kEsimoRecursivo(nodo.derecho, k, contador, resultado);
+    }
     /**
      * Inserta un valor en el arbol respetando la propiedad del BST.
      * Si el valor ya existe se ignora (no se insertan duplicados).
