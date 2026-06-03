@@ -172,6 +172,27 @@ public class ArbolBinarioBusqueda {
             rangoRecursivo(nodo.derecho, min, max); // puede haber valores validos a la derecha
         }
     }
+    public int diametro() {
+        int[] max = {0};
+        diametroRecursivo(raiz, max);
+        return max[0];
+    }
+
+    private int diametroRecursivo(Nodo nodo, int[] max) {
+        if (nodo == null) {
+            return -1;
+        }
+        int izq = diametroRecursivo(nodo.izquierdo, max);
+        int der = diametroRecursivo(nodo.derecho, max);
+
+        int caminoPorEsteNodo = izq + der + 2;
+        if (caminoPorEsteNodo > max[0]) {
+            max[0] = caminoPorEsteNodo;
+        }
+        return 1 + (izq > der ? izq : der);
+    }
+    
+    
     /**
      * Inserta un valor en el arbol respetando la propiedad del BST.
      * Si el valor ya existe se ignora (no se insertan duplicados).

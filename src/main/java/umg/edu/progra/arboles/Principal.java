@@ -15,6 +15,23 @@ public class Principal {
     public static void main(String[] args) {
 
         ArbolBinarioBusqueda arbol = new ArbolBinarioBusqueda();
+     // -- Extra E4: BST desde argumentos de consola --
+        if (args.length > 0) {
+            System.out.println("\n-- Extra E4: BST desde consola --");
+            ArbolBinarioBusqueda arbolArgs = new ArbolBinarioBusqueda();
+            for (String arg : args) {
+                try {
+                    arbolArgs.insertar(Integer.parseInt(arg));
+                } catch (NumberFormatException e) {
+                    System.out.println("Ignorando valor no numerico: " + arg);
+                }
+            }
+            arbolArgs.imprimirArbol();
+            System.out.print("InOrden: ");
+            arbolArgs.inOrden();
+            System.out.println("Tamanio: " + arbolArgs.tamanio());
+            return; // ejecuta solo esto si hay args
+        }
 
         /*
          * Insertamos estos valores para formar el siguiente BST:
@@ -160,9 +177,9 @@ public class Principal {
         for (int v : new int[]{50, 30, 70, 20, 40, 60, 80, 10}) {
             arbolK.insertar(v);
         }
-        System.out.println("1er menor: " + arbolK.kEsimoMenor(1)); // 10
-        System.out.println("3er menor: " + arbolK.kEsimoMenor(3)); // 30
-        System.out.println("5to menor: " + arbolK.kEsimoMenor(5)); // 50
+        System.out.println("1er menor: " + arbolK.kEsimoMenor(1)); 
+        System.out.println("3er menor: " + arbolK.kEsimoMenor(3)); 
+        System.out.println("5to menor: " + arbolK.kEsimoMenor(5)); 
         
         System.out.println("\n-- Extra E2: imprimirRangoOrdenado --");
         ArbolBinarioBusqueda arbolR = new ArbolBinarioBusqueda();
@@ -170,9 +187,18 @@ public class Principal {
             arbolR.insertar(v);
         }
         System.out.print("Rango [20, 60]: ");
-        arbolR.imprimirRangoOrdenado(20, 60); // 20 30 40 50 60
+        arbolR.imprimirRangoOrdenado(20, 60); 
         System.out.print("Rango [40, 80]: ");
-        arbolR.imprimirRangoOrdenado(40, 80); // 40 50 60 70 80
+        arbolR.imprimirRangoOrdenado(40, 80); 
+        
+        System.out.println("\n-- Extra E3: diametro --");
+        ArbolBinarioBusqueda arbolD = new ArbolBinarioBusqueda();
+        for (int v : new int[]{50, 30, 70, 20, 40, 60, 80, 10}) {
+            arbolD.insertar(v);
+        }
+        arbolD.imprimirArbol();
+        System.out.println("Diametro: " + arbolD.diametro()); // 6
+        // El camino mas largo es: 10->20->30->50->70->60 o 10->20->30->50->70->80
         /*
          * Ejercicios
          *
