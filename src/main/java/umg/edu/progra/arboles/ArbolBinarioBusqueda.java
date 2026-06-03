@@ -106,6 +106,27 @@ public class ArbolBinarioBusqueda {
         }
         return nodo.dato; // se separan aqui, este es el LCA
     }
+    
+    
+    //metodo problema 5
+    
+    public void invertir() {
+        invertirRecursivo(raiz);
+    }
+
+    private void invertirRecursivo(Nodo nodo) {
+        if (nodo == null) {
+            return;
+        }
+        // Intercambiar hijos
+        Nodo temp = nodo.izquierdo;
+        nodo.izquierdo = nodo.derecho;
+        nodo.derecho = temp;
+
+        // Repetir en ambos subarboles
+        invertirRecursivo(nodo.izquierdo);
+        invertirRecursivo(nodo.derecho);
+    }
     /**
      * Inserta un valor en el arbol respetando la propiedad del BST.
      * Si el valor ya existe se ignora (no se insertan duplicados).

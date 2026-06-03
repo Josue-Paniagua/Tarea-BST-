@@ -134,6 +134,25 @@ public class Principal {
             System.out.println("Excepcion correcta: " + e.getMessage());
         }
         
+        //sysos del problma 5
+        
+        System.out.println("\n-- Prueba invertir (espejo) --");
+        ArbolBinarioBusqueda arbolEspejo = new ArbolBinarioBusqueda();
+        for (int v : new int[]{50, 30, 70, 20, 40, 60, 80, 10}) {
+            arbolEspejo.insertar(v);
+        }
+
+        System.out.println("ANTES de invertir:");
+        arbolEspejo.imprimirArbol();
+        System.out.print("InOrden antes: ");
+        arbolEspejo.inOrden();
+
+        arbolEspejo.invertir();
+
+        System.out.println("\nDESPUES de invertir:");
+        arbolEspejo.imprimirArbol();
+        System.out.print("InOrden despues: ");
+        arbolEspejo.inOrden();
         /*
          * Ejercicios
          *
