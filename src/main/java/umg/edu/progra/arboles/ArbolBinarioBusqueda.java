@@ -152,6 +152,26 @@ public class ArbolBinarioBusqueda {
         }
         kEsimoRecursivo(nodo.derecho, k, contador, resultado);
     }
+    
+    public void imprimirRangoOrdenado(int min, int max) {
+        rangoRecursivo(raiz, min, max);
+        System.out.println();
+    }
+
+    private void rangoRecursivo(Nodo nodo, int min, int max) {
+        if (nodo == null) {
+            return;
+        }
+        if (nodo.dato > min) {
+            rangoRecursivo(nodo.izquierdo, min, max); // puede haber valores validos a la izquierda
+        }
+        if (nodo.dato >= min && nodo.dato <= max) {
+            System.out.print(nodo.dato + " "); // este nodo esta en el rango
+        }
+        if (nodo.dato < max) {
+            rangoRecursivo(nodo.derecho, min, max); // puede haber valores validos a la derecha
+        }
+    }
     /**
      * Inserta un valor en el arbol respetando la propiedad del BST.
      * Si el valor ya existe se ignora (no se insertan duplicados).
